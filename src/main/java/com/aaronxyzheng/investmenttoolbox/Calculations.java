@@ -36,8 +36,6 @@ public class Calculations {
         BigDecimal bd = new BigDecimal(result);
         bd = bd.setScale(2 , RoundingMode.HALF_UP);
         return bd.doubleValue();
-
-        // IMPORTANT: HAVE TO ADD FEATURE TO SEE IF THINGS GOING DOWN. RN IF A MORE RECENT VALUE IS LOWER THAN PAST THIS WON'T WORK
     }
 
     private ArrayList<Integer> createGrowthLengthList(int arrayLength) {
@@ -65,3 +63,7 @@ public class Calculations {
         return growthLengthList;
     }
 }
+
+
+
+
