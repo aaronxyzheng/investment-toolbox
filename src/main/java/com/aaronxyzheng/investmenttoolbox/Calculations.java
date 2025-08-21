@@ -8,6 +8,15 @@ import java.math.RoundingMode;
 
 public class Calculations {
     public HashMap<Integer, Double> returnAllGrowthRates(String[] array) {
+
+        for(int i = 0; i < array.length; i++) {
+            if(array[i].startsWith("(") && array[i].endsWith(")")) {
+                array[i] = "-" + array[i].substring(1, array[i].length() - 1);
+            } else if(array[i].startsWith("(")) {
+                array[i] = "-" + array[i].substring(1, array[i].length());
+            }
+        }
+
         HashMap<Integer, Double> growthMap = new HashMap<Integer, Double>();
         
         // Makes the Array a Double Array
@@ -29,6 +38,11 @@ public class Calculations {
     }
 
     private double calculateGrowthRate(double[] valuesArray, int growthLength) { // Growth Length is the rate length. Like 10 for 10 year growth rate.
+
+        if(valuesArray[growthLength] < 0) {
+            return Double.NaN;
+        }
+
         double multiplier = valuesArray[0]/valuesArray[growthLength];
         double growthRate = Math.pow(multiplier, (1.0/growthLength));
         double result = (growthRate-1)*100;
@@ -63,6 +77,7 @@ public class Calculations {
         return growthLengthList;
     }
 }
+
 
 
 
